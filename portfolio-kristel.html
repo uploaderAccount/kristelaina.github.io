@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kristel Aina B. Naparota | Financial Management Portfolio</title>
+<style>
+  :root {
+    --bg: #fdf7f4;
+    --ink: #2b2433;
+    --muted: #7a6f86;
+    --lilac: #b9a4f5;
+    --peach: #ffc3a8;
+    --mint: #bfe9d6;
+    --sky: #bcd9ff;
+    --card: rgba(255, 255, 255, 0.72);
+    --border: rgba(255, 255, 255, 0.9);
+    --shadow: 0 12px 40px rgba(122, 90, 180, 0.14);
+    --accent: #7c5cf0;
+    --accent-2: #f27ba9;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: "Inter", "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background:
+      radial-gradient(900px 500px at 10% -5%, #e9e0ff 0%, transparent 60%),
+      radial-gradient(800px 500px at 100% 10%, #ffe3d6 0%, transparent 60%),
+      radial-gradient(900px 600px at 0% 60%, #dff5ea 0%, transparent 60%),
+      radial-gradient(800px 600px at 100% 95%, #dcebff 0%, transparent 60%),
+      var(--bg);
+    background-attachment: fixed;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ---------- NAV ---------- */
+  header {
+    position: fixed; top: 14px; left: 0; right: 0; z-index: 50;
+    display: flex; justify-content: center; padding: 0 16px;
+  }
+  nav {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--card);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    border-radius: 999px;
+    padding: 8px 10px 8px 22px;
+    max-width: 960px; width: 100%;
+  }
+  .logo {
+    font-family: var(--serif); font-weight: 700; font-size: 1.2rem;
+    color: var(--accent); text-decoration: none; margin-right: auto; letter-spacing: .5px;
+  }
+  .logo span { color: var(--accent-2); }
+  .links { display: flex; gap: 2px; list-style: none; }
+  .links a {
+    display: block; text-decoration: none; color: var(--ink);
+    font-size: .86rem; font-weight: 500;
+    padding: 8px 14px; border-radius: 999px;
+    transition: background .25s, color .25s, transform .25s;
+  }
+  .links a:hover { background: linear-gradient(135deg, var(--lilac), var(--peach)); color: #fff; transform: translateY(-1px); }
+  #menu-toggle, .burger { display: none; }
+
+  /* ---------- LAYOUT ---------- */
+  section { padding: 100px 24px; max-width: 1020px; margin: 0 auto; position: relative; }
+  .eyebrow {
+    font-size: .78rem; letter-spacing: .28em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  h2 {
+    font-family: var(--serif); font-size: clamp(2rem, 4.5vw, 2.8rem);
+    line-height: 1.15; margin-bottom: 14px;
+  }
+  h2 em { font-style: italic; color: var(--accent-2); }
+  .lead { color: var(--muted); max-width: 620px; margin-bottom: 38px; }
+  .glass {
+    background: var(--card);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    border-radius: 26px; box-shadow: var(--shadow);
+  }
+
+  /* ---------- HOME ---------- */
+  #home {
+    min-height: 100vh; display: flex; align-items: center;
+    padding-top: 120px;
+  }
+  .hero { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: center; width: 100%; }
+  .hello {
+    display: inline-flex; gap: 8px; align-items: center;
+    background: #fff; border-radius: 999px; padding: 6px 16px;
+    font-size: .85rem; box-shadow: var(--shadow); margin-bottom: 22px;
+  }
+  .hello i { width: 8px; height: 8px; border-radius: 50%; background: #5bd6a0; display: inline-block; animation: pulse 2s infinite; }
+  h1 {
+    font-family: var(--serif); font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.05; margin-bottom: 18px; letter-spacing: -.5px;
+  }
+  h1 .grad {
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    font-style: italic;
+  }
+  .hero p { color: var(--muted); font-size: 1.08rem; max-width: 520px; margin-bottom: 30px; }
+  .btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    text-decoration: none; font-weight: 600; font-size: .95rem;
+    padding: 14px 28px; border-radius: 999px; transition: transform .25s, box-shadow .25s;
+    display: inline-block;
+  }
+  .btn.primary { background: linear-gradient(120deg, var(--accent), var(--accent-2)); color: #fff; box-shadow: 0 10px 26px rgba(124, 92, 240, .35); }
+  .btn.ghost { background: #fff; color: var(--ink); box-shadow: var(--shadow); }
+  .btn:hover { transform: translateY(-3px); }
+
+  .avatar-wrap { position: relative; display: grid; place-items: center; }
+
+  /* PROFILE PICTURE FRAME */
+  .blob {
+    position: relative; overflow: hidden;
+    width: min(340px, 78vw); aspect-ratio: 1;
+    background: linear-gradient(140deg, var(--lilac), var(--peach) 55%, var(--mint));
+    border-radius: 58% 42% 62% 38% / 48% 55% 45% 52%;
+    animation: morph 11s ease-in-out infinite;
+    display: grid; place-items: center;
+    border: 6px solid #fff;
+    box-shadow: 0 30px 60px rgba(124, 92, 240, .25);
+    font-family: var(--serif); font-size: 5.5rem; color: #fff; font-style: italic;
+    text-shadow: 0 6px 20px rgba(80, 50, 150, .3);
+  }
+  .blob img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+  }
+
+  .chip {
+    position: absolute; background: #fff; border-radius: 16px;
+    padding: 9px 16px; font-size: .82rem; font-weight: 600; box-shadow: var(--shadow);
+    animation: float 6s ease-in-out infinite; z-index: 2;
+  }
+  .chip.a { top: 6%; left: 2%; }
+  .chip.b { bottom: 10%; right: 0; animation-delay: -2s; }
+  .chip.c { bottom: 2%; left: 8%; animation-delay: -4s; }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .about-card { padding: 34px; }
+  .about-card p { color: var(--muted); margin-bottom: 14px; }
+  .facts { list-style: none; display: grid; gap: 14px; }
+  .facts li { display: flex; gap: 14px; align-items: center; }
+  .facts .ico {
+    width: 42px; height: 42px; border-radius: 14px; display: grid; place-items: center;
+    font-size: 1.15rem; background: linear-gradient(135deg, #efe8ff, #ffe8dc);
+  }
+  .facts small { display: block; color: var(--muted); font-size: .78rem; line-height: 1.2; }
+  .facts b { font-weight: 600; }
+
+  /* ---------- EDUCATION ---------- */
+  .timeline { position: relative; padding-left: 34px; display: grid; gap: 22px; }
+  .timeline::before {
+    content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 2px;
+    background: linear-gradient(var(--accent), var(--accent-2), var(--mint));
+    border-radius: 2px;
+  }
+  .t-item { padding: 26px 30px; position: relative; transition: transform .3s; }
+  .t-item:hover { transform: translateX(6px); }
+  .t-item::before {
+    content: ""; position: absolute; left: -34px; top: 32px;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: #fff; border: 4px solid var(--accent);
+  }
+  .t-item .when { font-size: .78rem; font-weight: 600; letter-spacing: .1em; color: var(--accent-2); text-transform: uppercase; }
+  .t-item h3 { font-family: var(--serif); font-size: 1.35rem; margin: 4px 0 2px; }
+  .t-item p { color: var(--muted); font-size: .95rem; }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .ach { padding: 30px 26px; transition: transform .3s, box-shadow .3s; }
+  .ach:hover { transform: translateY(-8px); box-shadow: 0 22px 50px rgba(122, 90, 180, .22); }
+  .ach .badge {
+    width: 56px; height: 56px; border-radius: 18px; display: grid; place-items: center;
+    font-size: 1.6rem; margin-bottom: 18px;
+  }
+  .ach:nth-child(1) .badge { background: linear-gradient(135deg, #e6dcff, #cfc0ff); }
+  .ach:nth-child(2) .badge { background: linear-gradient(135deg, #ffe1d2, #ffc3a8); }
+  .ach:nth-child(3) .badge { background: linear-gradient(135deg, #d4f4e6, #b3e6cf); }
+  .ach h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 6px; }
+  .ach p { color: var(--muted); font-size: .92rem; }
+
+  /* ---------- SKILLS ---------- */
+  .skills-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+  .bars, .tags { padding: 32px; }
+  .bars h3, .tags h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 20px; }
+  .bar { margin-bottom: 18px; }
+  .bar .row { display: flex; justify-content: space-between; font-size: .88rem; font-weight: 600; margin-bottom: 7px; }
+  .track { height: 10px; background: #efe9fa; border-radius: 99px; overflow: hidden; }
+  .fill {
+    height: 100%; border-radius: 99px;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform-origin: left; animation: grow 1.6s cubic-bezier(.2, .8, .2, 1) both;
+  }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag-list span {
+    padding: 9px 18px; border-radius: 999px; font-size: .86rem; font-weight: 500;
+    background: #fff; box-shadow: 0 4px 14px rgba(122, 90, 180, .1);
+    transition: transform .25s, background .25s;
+  }
+  .tag-list span:hover { transform: translateY(-3px) rotate(-2deg); background: var(--peach); }
+
+  /* ---------- GOALS ---------- */
+  .goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .goal { padding: 30px 26px; text-align: left; position: relative; overflow: hidden; }
+  .goal .num {
+    font-family: var(--serif); font-size: 4.2rem; font-style: italic; line-height: 1;
+    background: linear-gradient(135deg, var(--lilac), var(--peach));
+    -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px;
+  }
+  .goal h3 { font-family: var(--serif); font-size: 1.2rem; margin-bottom: 6px; }
+  .goal p { color: var(--muted); font-size: .92rem; }
+  .goal small { display: inline-block; margin-top: 14px; font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+
+  /* ---------- CONTACT ---------- */
+  .contact { padding: 54px 36px; text-align: center; background:
+      linear-gradient(135deg, rgba(185,164,245,.35), rgba(255,195,168,.35)), var(--card); }
+  .contact h2 { margin-bottom: 10px; }
+  .contact p { color: var(--muted); max-width: 480px; margin: 0 auto 28px; }
+  .socials { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+  .socials a {
+    text-decoration: none; color: var(--ink); background: #fff; font-size: .88rem; font-weight: 500;
+    padding: 10px 20px; border-radius: 999px; box-shadow: var(--shadow); transition: transform .25s, color .25s;
+  }
+  .socials a:hover { transform: translateY(-3px); color: var(--accent); }
+
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 10px 20px 40px; }
+
+  /* ---------- ANIMATIONS ---------- */
+  @keyframes morph {
+    0%, 100% { border-radius: 58% 42% 62% 38% / 48% 55% 45% 52%; }
+    50%      { border-radius: 40% 60% 42% 58% / 58% 42% 58% 42%; }
+  }
+  @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(91, 214, 160, .6); } 70% { box-shadow: 0 0 0 10px rgba(91, 214, 160, 0); } 100% { box-shadow: 0 0 0 0 rgba(91, 214, 160, 0); } }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  @keyframes rise { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+  @supports (animation-timeline: view()) {
+    .reveal { animation: rise both linear; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px) {
+    .hero, .about-grid, .skills-grid { grid-template-columns: 1fr; }
+    .cards, .goals { grid-template-columns: 1fr; }
+    .avatar-wrap { order: -1; }
+    #home { padding-top: 130px; }
+    .burger { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: #fff; cursor: pointer; font-size: 1.2rem; }
+    .links {
+      position: absolute; top: 70px; left: 16px; right: 16px; flex-direction: column;
+      background: var(--card); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border); border-radius: 24px; padding: 12px; box-shadow: var(--shadow);
+      opacity: 0; pointer-events: none; transform: translateY(-10px); transition: .3s;
+    }
+    #menu-toggle:checked ~ .links { opacity: 1; pointer-events: auto; transform: none; }
+    .links a { padding: 12px 16px; }
+    nav { position: relative; }
+  }
+  /* ---------- ACHIEVEMENTS IMAGE ---------- */
+/* ---------- ACHIEVEMENTS GALLERY ---------- */
+
+.achievements-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.achievement-image {
+  position: relative;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-image:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 22px 45px rgba(122, 90, 180, 0.22);
+}
+
+.achievement-image img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: contain;
+  background: rgba(245, 240, 255, 0.45);
+  border-radius: 15px;
+}
+
+/* Responsive layout */
+@media (max-width: 860px) {
+  .achievements-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .achievement-image img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 520px) {
+  .achievements-gallery {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .achievement-image img {
+    height: 300px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header>
+  <nav>
+    <a href="#home" class="logo">My Portfolio<span></span></a>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="burger" aria-label="Toggle menu">☰</label>
+    <ul class="links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HOME ============ -->
+<section id="home">
+  <div class="hero">
+    <div>
+
+      <h1> <span class="grad">KRISTEL AINA B. NAPAROTA</span></h1>
+      <p>
+
+       A first-year Financial Management student with a passion for turning numbers into opportunities.
+       I’m on a journey to master budgeting, smart investing, and
+       financial planning while inspiring others to make wiser money decisions and build a brighter financial future.
+
+        </p>
+      <div class="btns">
+        <a href="#contact" class="btn primary">Let's Connect</a>
+        <a href="#about" class="btn ghost">More About Me</a>
+      </div>
+    </div>
+    <div class="avatar-wrap">
+      <!--
+        PROFILE PICTURE:
+        1. Save your photo in the same folder as this file and name it  profile.jpg
+           (or change the name in src="..." below).
+        2. Until the photo is added, the initials "KN" are shown instead.
+      -->
+      <div class="blob">
+        KN
+        <img src="image1.png" alt="Photo of Kristel Aina B. Naparota" onerror="this.remove()">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="reveal">
+    <div class="eyebrow">About Me</div>
+    <h2>A little bit <em>about</em> who I am</h2>
+    <p class="lead">Just starting my college journey, and already fascinated by how money shapes decisions.</p>
+  </div>
+  <div class="about-grid reveal">
+    <div class="glass about-card">
+      <p>
+       I am a first-year Financial Management student with a growing passion for understanding how money works and how to manage it wisely.
+        My interest in finance inspires me to learn more about budgeting, saving, investing, and making smart financial decisions.
+         Beyond the classroom, I enjoy exploring new financial concepts and discovering practical ways to build better money habits. I believe that financial success starts with small, consistent steps, and I aspire to use my knowledge not only to achieve my own financial goals but also to help others become more confident in managing their finances.
+    </p>
+    </div>
+    <div class="glass about-card">
+      <ul class="facts">
+        <li><span class="ico">🎓</span><div><small>Studying</small><b>B.S. Financial Management</b></div></li>
+        <li><span class="ico">📍</span><div><small>Based in</small><b>Ipil Zamboanga Sibugay, Philippines</b></div></li>
+        <li><span class="ico">📈</span><div><small>Interested in</small><b>Investing, Banking &amp; Budgeting</b></div></li>
+        <li><span class="ico">🌱</span><div><small>Currently learning</small><b>Accounting, Excel &amp; Financial Analysis</b></div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="reveal">
+    <div class="eyebrow">Education</div>
+    <h2>My <em>learning</em> journey</h2>
+    <p class="lead">Where I've studied and where I'm headed.</p>
+  </div>
+  <div class="timeline">
+    <div class="glass t-item reveal">
+      <div class="when">2026 – Present</div>
+      <h3>Bachelor of Science in Financial Management</h3>
+      <p>Dr. Aurelio Mendoza Memorial Colleges · First Year. Studying fundamentals of accounting, microeconomics, business mathematics, and principles of management.</p>
+    </div>
+    <div class="glass t-item reveal">
+      <div class="when">2024 – 2025</div>
+      <h3>Senior High School</h3>
+      <p>Imelda National High School · Graduated with honors. Accountancy, Business &amp; Management academic.</p>
+    </div>
+     <div class="glass t-item reveal">
+      <div class="when">2019 – 2023</div>
+      <h3>High School Diploma</h3>
+      <p>Dawa-Dawa National High School · Graduated with honors. Information, Computer  &amp; Technology track.</p>
+    </div>
+     <div class="glass t-item reveal">
+      <div class="when">2024 – 2025</div>
+      <h3>Elementary School</h3>
+      <p>Dawa-Dawa Elementary School· Graduated with honors.</p>
+    </div>
+  
+  </div>
+</section>
+
+<!-- ============ ACHIEVEMENTS ============ -->
+<section id="achievements">
+  <div class="reveal">
+    <div class="eyebrow">Achievements</div>
+    <h2>Little <em>wins</em>, big motivation</h2>
+    <p class="lead">Milestones that keep me going.</p>
+  </div>
+
+  <div class="achievements-gallery">
+
+  <div class="achievement-image reveal">
+    <img src="image2.png" alt="Achievement 1">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image3.png" alt="Achievement 2">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image4.png" alt="Achievement 3">
+  </div>
+
+   <div class="achievement-image reveal">
+    <img src="image5.png" alt="Achievement 3">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image6.png" alt="Achievement 3">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image7.png" alt="Achievement 3">
+  </div>
+  <div class="achievement-image reveal">
+    <img src="image13.png" alt="Achievement 3">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image14.png" alt="Achievement 3">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image15.png" alt="Achievement 3">
+  </div>
+
+  <div class="achievement-image reveal">
+    <img src="image16.png" alt="Achievement 3">
+  </div>
+
+</div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="reveal">
+    <div class="eyebrow">Skills</div>
+    <h2>What I'm <em>good</em> at</h2>
+    <p class="lead">Always growing. These are my current strengths and tools.</p>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="glass bars">
+      <h3>Technical</h3>
+      <div class="bar"><div class="row"><span>Microsoft Word</span><span>85%</span></div><div class="track"><div class="fill" style="width:85%"></div></div></div>
+      <div class="bar"><div class="row"><span>Budgeting &amp; Cash Flow Planning</span><span>80%</span></div><div class="track"><div class="fill" style="width:80%"></div></div></div>
+      <div class="bar"><div class="row"><span>Basic Accounting</span><span>70%</span></div><div class="track"><div class="fill" style="width:70%"></div></div></div>
+     
+    </div>
+    <div class="glass tags">
+      <h3>Soft Skills &amp; Tools</h3>
+      <div class="tag-list">
+        </span><span>Cooking skills</span><span>Communication</span>
+        <span>Time Management</span><span>Teamwork</span><span>Integrity</span>
+        <span>Writing poem</span><span>Canva</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GOALS ============ -->
+<section id="goals">
+  <div class="reveal">
+    <div class="eyebrow">Goals</div>
+    <h2>Where I'm <em>heading</em></h2>
+    <p class="lead">Dreams with deadlines. Here's what I'm working toward.</p>
+  </div>
+  <div class="goals">
+    <div class="glass goal reveal">
+      <div class="num">01</div>
+      <h3>Graduate with honors</h3>
+      <p>Build a rock-solid foundation in accounting, finance, and economics.</p>
+      <small>4-year plan</small>
+    </div>
+   <div class="glass goal reveal">
+  <div class="num">02</div>
+  <h3>Become a Professional Accountant</h3>
+  <p>Strive to become a skilled and licensed professional accountant by completing my studies, gaining relevant experience, and passing the necessary licensure examination.</p>
+  <small>After graduation</small>
+</div>
+    <div class="glass goal reveal">
+      <div class="num">03</div>
+      <h3>Become a financial advisor</h3>
+      <p>Help individuals and small businesses plan, save, and invest with confidence.</p>
+      <small>Long-term</small>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="glass contact reveal">
+    <div class="eyebrow">Contact</div>
+    <h2>Let's <em>grow</em> something together</h2>
+    <p>Have an internship, a project, or a money question? My inbox is always open.</p>
+    <a href="mailto:alex.rivera@email.com" class="btn primary">naparotakristelainakristel@email.com</a>
+   
+  </div>
+</section>
+
+</main>
+
+<footer>© 2026 Kristel Aina B. Naparota  Designed with ♡ and a well-balanced budget</footer>
+
+</body>
+</html>
